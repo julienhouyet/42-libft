@@ -6,18 +6,18 @@
 /*   By: jhouyet <jhouyet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 11:54:04 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/10/27 10:30:28 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/10/27 10:36:22 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+size_t	ft_strlen(const char *s)
 {
 	int	i;
 
 	i = 0;
-	while (str[i] != '\0')
+	while (s[i] != '\0')
 	{
 		i++;
 	}
