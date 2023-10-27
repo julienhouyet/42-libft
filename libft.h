@@ -6,16 +6,13 @@
 /*   By: jhouyet <jhouyet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 09:55:18 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/10/27 10:30:47 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/10/27 10:31:58 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <stdlib.h>
-# include <stdio.h>
-# include <string.h>
-# include <ctype.h>
 # include <unistd.h>
 
 int		ft_isalpha(int c);
