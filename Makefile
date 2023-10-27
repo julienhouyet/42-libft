@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+         #
+#    By: jhouyet <jhouyet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/19 09:14:53 by jhouyet           #+#    #+#              #
-#    Updated: 2023/10/26 16:02:31 by jhouyet          ###   ########.fr        #
+#    Updated: 2023/10/27 10:26:46 by jhouyet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-Library		= libft
+NAME		= libft.a
 
 files 	   = 	ft_isalpha \
 				ft_isdigit \
@@ -51,17 +51,15 @@ Compiler	= gcc
 
 CmpFlags	= -Wall -Wextra -Werror
 
-OUTN	= $(Library).a
+OUTN	= $(NAME)
 
 CFILES	= $(files:%=%.c)
 
 OFILES	= $(files:%=%.o)
 
-NAME	= $(OUTN)
-
 $(NAME):
 	$(Compiler) $(CmpFlags) -c $(CFILES) -I./
-	ar -rc $(OUTN) $(OFILES)
+	ar -rc $(NAME) $(OFILES)
 
 all: $(NAME)
 
