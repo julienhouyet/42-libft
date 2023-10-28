@@ -6,7 +6,7 @@
 #    By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/19 09:14:53 by jhouyet           #+#    #+#              #
-#    Updated: 2023/10/28 16:27:56 by jhouyet          ###   ########.fr        #
+#    Updated: 2023/10/28 16:41:11 by jhouyet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,15 @@ SRCS_P2		= 	ft_atoi.c \
 				ft_putnbr_fd.c \
 				ft_putendl_fd.c
 
-SRCS_B		=	ft_lstnew.c
+SRCS_B		=	ft_lstnew.c \
+				ft_lstadd_front.c \
+				ft_lstsize \
+				ft_lstlast \
+				ft_lstadd_back \
+				ft_lstdelone\
+				ft_lstclear \
+				ft_lstiter \
+				ft_lstmap
 
 OBJS_P1 = $(SRCS_P1:.c=.o)
 OBJS_P2 = $(SRCS_P2:.c=.o)
