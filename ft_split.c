@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 14:54:56 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/10/28 08:49:00 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/10/28 15:54:19 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,80 +34,45 @@ static int	ft_count_words(char const *s, char c)
 	return (words);
 }
 
-static void	ft_strcpy(char *word, char *s, char c, int k)
+static int	ft_split_words(char **tabs, char const *s, char c, int word)
 {
-	int	i;
+	int		start;
+	int		end;
 
-	i = 0;
-	while (s[k] != '\0' && s[k] == c)
-		k++;
-	while (s[k + i] != c && s[k + i] != '\0')
+	start = 0;
+	end = 0;
+	while (s[end])
 	{
-		word[i] = s[k + i];
-		i++;
-	}
-	word[i] = '\0';
-}
-
-char static	*ft_get_word(char *s, char c, int *j)
-{
-	char	*word;
-	int		k;
-
-	k = *j;
-	word = NULL;
-	while (s[*j] != '\0')
-	{
-		if (s[*j] != c)
+		if (s[end] == c || s[end] == 0)
+			start = end + 1;
+		if (s[end] != c && (s[end + 1] == c || s[end + 1] == 0))
 		{
-			while (s[*j] != '\0' && s[*j] != c)
-				*j += 1;
-			word = (char *)malloc(sizeof(char) * (*j + 1));
-			if (word == NULL)
-				return (NULL);
-			break ;
+			tabs[word] = malloc(sizeof(char) * (end - start + 2));
+			if (!tabs[word])
+			{
+				while (word++)
+					free(tabs[word]);
+				return (0);
+			}
+			ft_strlcpy(tabs[word], (s + start), end - start + 2);
+			word++;
 		}
-		*j += 1;
+		end++;
 	}
-	ft_strcpy(word, s, c, k);
-	return (word);
-}
-
-static void	ft_free(char **tab, int i)
-{
-	while (i >= 0)
-	{
-		free(tab[i]);
-		i--;
-	}
-	free(tab);
+	tabs[word] = 0;
+	return (1);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**tabs;
-	int		nb_words;
-	int		i;
-	int		j;
 
-	if (s == NULL)
-		return (0);
-	i = 0;
-	j = 0;
-	nb_words = ft_count_words((char *)s, c);
-	tabs = (char **)malloc(sizeof(char *) * (nb_words + 1));
-	if (tabs == NULL)
-		return (0);
-	while (i < nb_words)
-	{
-		tabs[i] = ft_get_word((char *)s, c, &j);
-		if (tabs[i] == NULL)
-		{
-			ft_free(tabs, i);
-			return (NULL);
-		}
-		i++;
-	}
-	tabs[nb_words] = NULL;
+	if (!s)
+		return (NULL);
+	tabs = malloc(sizeof(char *) * (ft_count_words(s, c) + 1));
+	if (!tabs)
+		return (NULL);
+	if (!ft_split_words(tabs, s, c, 0))
+		return (NULL);
 	return (tabs);
 }
