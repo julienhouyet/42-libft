@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhouyet <jhouyet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 09:06:48 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/10/25 09:59:07 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/10/28 14:11:30 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	neg;
-	int	result;
+	int			i;
+	int			neg;
+	long int	result;
 
 	i = 0;
 	neg = 1;
@@ -26,9 +26,7 @@ int	ft_atoi(const char *str)
 	if (str[i] == '+' || str[i] == '-')
 	{
 		if (str[i] == '-')
-		{
 			neg = neg * -1;
-		}
 		i++;
 	}
 	while (str[i] >= '0' && str[i] <= '9')
