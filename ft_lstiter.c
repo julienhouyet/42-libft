@@ -6,8 +6,17 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 16:39:50 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/10/28 16:40:00 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/10/29 10:18:15 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+void	ft_lstiter(t_list *lst, void (*f)(void *))
+{
+	while (lst)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
+}
