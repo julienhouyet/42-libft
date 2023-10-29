@@ -6,8 +6,14 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 16:39:07 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/10/28 16:39:19 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/10/29 09:32:12 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
+{
+	del(lst->content);
+	free(lst);
+}
