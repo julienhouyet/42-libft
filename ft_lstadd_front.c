@@ -6,8 +6,14 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 16:32:45 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/10/28 16:33:06 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/10/29 08:51:20 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+void	ft_lstadd_front(t_list **lst, t_list *new)
+{
+	new->next = *lst;
+	*lst = new;
+}
