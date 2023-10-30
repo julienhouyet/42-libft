@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 14:54:56 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/10/30 11:59:13 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/10/30 13:30:36 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,17 @@ static int	ft_count_words(char const *s, char c)
 	return (words);
 }
 
+static void	ft_free(char **tabs, size_t i)
+{
+	while (i > 0)
+	{
+		free(tabs[i]);
+		i--;
+	}
+	free(tabs[0]);
+	free(tabs);
+}
+
 static int	ft_split_words(char **tabs, char const *s, char c, int word)
 {
 	int		start;
@@ -50,8 +61,7 @@ static int	ft_split_words(char **tabs, char const *s, char c, int word)
 			tabs[word] = malloc(sizeof(char) * (end - start + 2));
 			if (!tabs[word])
 			{
-				while (word++)
-					free(tabs[word]);
+				ft_free(tabs, word);
 				return (0);
 			}
 			ft_strlcpy(tabs[word], (s + start), end - start + 2);
