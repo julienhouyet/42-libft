@@ -2,3 +2,4 @@
 **/*.output
 a.out
 .vscode
+testing/
