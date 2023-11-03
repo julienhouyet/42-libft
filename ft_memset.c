@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 12:38:10 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/10/20 09:27:39 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/11/03 14:20:52 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	char			*ptr;
+	unsigned char	*ptr;
 	size_t			i;
 
 	i = 0;
