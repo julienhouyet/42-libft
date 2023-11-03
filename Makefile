@@ -6,13 +6,13 @@
 #    By: jhouyet <jhouyet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/19 09:14:53 by jhouyet           #+#    #+#              #
-#    Updated: 2023/11/03 08:55:14 by jhouyet          ###   ########.fr        #
+#    Updated: 2023/11/03 11:40:29 by jhouyet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= libft.a
 
-SRCS_P1		=	ft_isalpha.c \
+SRCS		=	ft_isalpha.c \
 				ft_isdigit.c \
 				ft_isalnum.c \
 				ft_isascii.c \
@@ -33,9 +33,8 @@ SRCS_P1		=	ft_isalpha.c \
 				ft_memcmp.c \
 				ft_strnstr.c \
 				ft_calloc.c \
-				ft_strdup.c
-
-SRCS_P2		= 	ft_atoi.c \
+				ft_strdup.c \
+				ft_atoi.c \
 				ft_substr.c \
 				ft_strjoin.c \
 				ft_strtrim.c \
@@ -48,7 +47,7 @@ SRCS_P2		= 	ft_atoi.c \
 				ft_putnbr_fd.c \
 				ft_putendl_fd.c
 
-SRCS_B		=	ft_lstnew_bonus.c \
+SRCSB		=	ft_lstnew_bonus.c \
 				ft_lstadd_front_bonus.c \
 				ft_lstsize_bonus.c \
 				ft_lstlast_bonus.c \
@@ -58,34 +57,34 @@ SRCS_B		=	ft_lstnew_bonus.c \
 				ft_lstiter_bonus.c \
 				ft_lstmap_bonus.c
 
-OBJS_P1 = $(SRCS_P1:.c=.o)
-OBJS_P2 = $(SRCS_P2:.c=.o)
-OBJS_B	= $(SRCS_B:.c=.o)
+OBJS	= ${SRCS:.c=.o}
 
-CC			= gcc
-FLAGS		= -Wall -Wextra -Werror
-LIB			= ar rcs
+OBJSB	= ${SRCSB:.c=.o}
 
-all: $(NAME)
+CC		= gcc
 
-%.o: %.c
-	$(CC) $(FLAGS) -o $@ -c $<
+RM		= rm -f
 
-$(NAME): $(OBJS_P1) $(OBJS_P2)
-	$(LIB) $@ $^
+CFLAGS	= -Wall -Wextra -Werror
 
-bonus: 		$(OBJS_B) $(OBJS_P1) $(OBJS_P2)
-			$(LIB) $(NAME) $^
+.c.o:
+	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
-norm:
-	norminette
+${NAME}: ${OBJS}
+	ar rc ${NAME} ${OBJS}
+
+all: ${NAME}
+
+bonus: ${NAME} ${OBJSB}
+
+$(OBJSB): $(SRCSB)
 
 clean:
-	rm -f $(OBJS_P1) $(OBJS_P2) $(OBJS_B)
+	${RM} ${OBJSB} ${OBJS}
 
 fclean: clean
-	rm -f $(NAME)
+	${RM} $(NAME)
 
-re: fclean all
+re:	fclean all
 
-.PHONY:	all clean fclean re
+.PHONY:	all bonus clean fclean re
