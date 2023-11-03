@@ -6,7 +6,7 @@
 #    By: jhouyet <jhouyet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/19 09:14:53 by jhouyet           #+#    #+#              #
-#    Updated: 2023/11/03 11:40:29 by jhouyet          ###   ########.fr        #
+#    Updated: 2023/11/03 11:48:43 by jhouyet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,6 +76,7 @@ ${NAME}: ${OBJS}
 all: ${NAME}
 
 bonus: ${NAME} ${OBJSB}
+	ar rc ${NAME} ${OBJSB}
 
 $(OBJSB): $(SRCSB)
 
