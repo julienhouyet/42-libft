@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+         #
+#    By: jhouyet <jhouyet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/19 09:14:53 by jhouyet           #+#    #+#              #
-#    Updated: 2023/11/03 08:06:48 by jhouyet          ###   ########.fr        #
+#    Updated: 2023/11/03 08:55:14 by jhouyet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,15 +48,15 @@ SRCS_P2		= 	ft_atoi.c \
 				ft_putnbr_fd.c \
 				ft_putendl_fd.c
 
-SRCS_B		=	ft_lstnew.c \
-				ft_lstadd_front.c \
-				ft_lstsize.c \
-				ft_lstlast.c \
-				ft_lstadd_back.c \
-				ft_lstdelone.c \
-				ft_lstclear.c \
-				ft_lstiter.c \
-				ft_lstmap.c
+SRCS_B		=	ft_lstnew_bonus.c \
+				ft_lstadd_front_bonus.c \
+				ft_lstsize_bonus.c \
+				ft_lstlast_bonus.c \
+				ft_lstadd_back_bonus.c \
+				ft_lstdelone_bonus.c \
+				ft_lstclear_bonus.c \
+				ft_lstiter_bonus.c \
+				ft_lstmap_bonus.c
 
 OBJS_P1 = $(SRCS_P1:.c=.o)
 OBJS_P2 = $(SRCS_P2:.c=.o)
