@@ -3,83 +3,69 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jhouyet <jhouyet@student.42.fr>            +#+  +:+       +#+         #
+#    By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/19 09:14:53 by jhouyet           #+#    #+#              #
-#    Updated: 2023/11/07 14:48:42 by jhouyet          ###   ########.fr        #
+#    Updated: 2023/12/21 09:31:44 by jhouyet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= libft.a
+RED=\033[0;31m
+GREEN=\033[0;32m
+YELLOW=\033[1;33m
+BLUE=\033[0;34m
+ORANGE=\033[38;2;255;165;0m
+NC=\033[0m
 
-SRCS		=	ft_isalpha.c \
-				ft_isdigit.c \
-				ft_isalnum.c \
-				ft_isascii.c \
-				ft_isprint.c \
-				ft_strlen.c \
-				ft_memset.c \
-				ft_bzero.c \
-				ft_memcpy.c \
-				ft_memmove.c \
-				ft_strlcpy.c \
-				ft_strlcat.c \
-				ft_toupper.c \
-				ft_tolower.c \
-				ft_strchr.c \
-				ft_strrchr.c \
-				ft_strncmp.c \
-				ft_memchr.c \
-				ft_memcmp.c \
-				ft_strnstr.c \
-				ft_calloc.c \
-				ft_strdup.c \
-				ft_atoi.c \
-				ft_substr.c \
-				ft_strjoin.c \
-				ft_strtrim.c \
-				ft_split.c \
-				ft_itoa.c \
-				ft_strmapi.c \
-				ft_striteri.c \
-				ft_putchar_fd.c \
-				ft_putstr_fd.c \
-				ft_putnbr_fd.c \
-				ft_putendl_fd.c	\
-				ft_lstnew.c \
-				ft_lstadd_front.c \
-				ft_lstsize.c \
-				ft_lstlast.c \
-				ft_lstadd_back.c \
-				ft_lstdelone.c \
-				ft_lstclear.c \
-				ft_lstiter.c \
-				ft_lstmap.c
+NAME = libft.a
 
-OBJS	= ${SRCS:.c=.o}
+SRC_DIR = src/
+OBJ_DIR = obj/
+LIB_DIR = lib/
+INC_DIR = include/
+LIBNAME = $(LIB_DIR)$(NAME)
 
-CC		= gcc
+SRC = $(wildcard $(SRC_DIR)*.c)
+OBJ = $(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 
-RM		= rm -f
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+IFLAGS = -I.
 
-CFLAGS	= -Wall -Wextra -Werror
+TOTAL_FILES 	:= $(words $(SRC))
+CURRENT_FILE 	:= 0
 
-.c.o:
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+define progress_bar_libft
+    @$(eval CURRENT_FILE=$(shell echo $$(($(CURRENT_FILE) + 1))))
+    @printf "\r$(YELLOW)Compiling... [%-$(TOTAL_FILES)s] %d/%d $(NC)" $$(for i in $$(seq 1 $(CURRENT_FILE)); do printf "#"; done) $(CURRENT_FILE) $(TOTAL_FILES)
+	@if [ $(CURRENT_FILE) -eq $(TOTAL_FILES) ]; then echo ""; fi
+endef
 
-${NAME}: ${OBJS}
-	ar rc ${NAME} ${OBJS}
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+	@mkdir -p $(OBJ_DIR)
+	@$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
+	$(call progress_bar_libft)
 
-all: ${NAME}
+all: $(LIBNAME)
 
-$(OBJSB): $(SRCSB)
+$(LIBNAME): $(OBJ)
+	@echo "$(GREEN)Creating Libft library $(LIBNAME)...$(NC)"
+	@mkdir -p $(LIB_DIR)
+	@ar rc $(LIBNAME) $(OBJ)
+	@echo "$(BLUE)Library Libft created!$(NC)"
 
 clean:
-	${RM} ${OBJSB} ${OBJS}
+	@echo "$(ORANGE)Cleaning objects Libft...$(NC)"
+	@$(RM) $(OBJ)
+	@rm -rf $(OBJ_DIR)
+	@echo "$(GREEN)Cleaned objects Libft!$(NC)"
 
 fclean: clean
-	${RM} $(NAME)
+	@echo "$(ORANGE)Fully cleaning Libft...$(NC)"
+	@$(RM) $(LIBNAME)
+	@rm -rf $(LIB_DIR)
+	@echo "$(BLUE)Fully cleaned Libft!$(NC)"
 
-re:	fclean all
+re: fclean all
 
-.PHONY:	all clean fclean re
+.PHONY: all clean fclean re
