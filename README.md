@@ -54,7 +54,7 @@ $ make fclean
  
 ✅ ft_isalpha
 ```c
-int isalpha( int ch );
+int ft_isalpha( int ch );
 ```
 ```
 Checks if the given character is an alphabetic character, i.e. either an uppercase letter (ABCDEFGHIJKLMNOPQRSTUVWXYZ), or a lowercase letter (abcdefghijklmnopqrstuvwxyz).
@@ -64,7 +64,7 @@ The behavior is undefined if the value of ch is not representable as unsigned ch
 
 ✅ ft_isdigit
 ```c
-int isdigit( int ch );
+int ft_isdigit( int ch );
 ```
 ```
 Checks if the given character is a numeric character (0123456789).
@@ -73,7 +73,7 @@ The behavior is undefined if the value of ch is not representable as unsigned ch
 
 ✅ ft_isalnum
 ```c
-int isalnum( int ch );
+int ft_isalnum( int ch );
 ```
 ```
 Checks if the given character is an alphanumeric character as classified by the current C locale. In the default locale, the following characters are alphanumeric:
@@ -85,7 +85,7 @@ The behavior is undefined if the value of ch is not representable as unsigned ch
  
 ✅ ft_isprint
 ```c
-int isprint( int ch );
+int ft_isprint( int ch );
 ```
 ```
 Checks if the given character can be printed, i.e. it is either a number (0123456789), an uppercase letter (ABCDEFGHIJKLMNOPQRSTUVWXYZ), a lowercase letter (abcdefghijklmnopqrstuvwxyz), a punctuation character(!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~), or space, or any character classified as printable by the current C locale.
@@ -94,7 +94,7 @@ The behavior is undefined if the value of ch is not representable as unsigned ch
  
 ✅ ft_strlen
 ```c
-size_t strlen( const char *str );
+size_t ft_strlen( const char *str );
 ```
 ```
 Returns the length of the given null-terminated byte string, that is, the number of characters in a character array whose first element is pointed to by str up to and not including the first null character.
@@ -104,7 +104,7 @@ The behavior is undefined if str is not a pointer to a null-terminated byte stri
 ✅ ft_memset
 
 ```c
-void *memset( void *dest, int ch, size_t count );
+void *ft_memset( void *dest, int ch, size_t count );
 ```
 ```
 Copies the value (unsigned char)ch into each of the first count characters of the object pointed to by dest.
@@ -114,7 +114,7 @@ The behavior is undefined if access occurs beyond the end of the dest array. The
 ✅ ft_bzero
 
 ```c
-void bzero(void s, size_t n);
+void ft_bzero(void s, size_t n);
 ```
 ```
 The bzero() function erases the data in the n bytes of the memory starting at the location pointed to by s, by writing zeros (bytes containing '\0') to that area.
@@ -123,7 +123,7 @@ The bzero() function erases the data in the n bytes of the memory starting at th
 ✅ ft_memcpy
 
 ```c
-void *memcpy( void *dest, const void *src, size_t count );
+void *ft_memcpy( void *dest, const void *src, size_t count );
 ```
 ```
 Copies count characters from the object pointed to by src to the object pointed to by dest. Both objects are interpreted as arrays of unsigned char.
@@ -133,7 +133,7 @@ The behavior is undefined if access occurs beyond the end of the dest array. If 
 ✅ ft_memmove
 
 ```c
-void *memmove( void* dest, const void* src, size_t count );
+void *ft_memmove( void* dest, const void* src, size_t count );
 ```
 ```
 Copies count characters from the object pointed to by src to the object pointed to by dest. Both objects are interpreted as arrays of unsigned char. The objects may overlap: copying takes place as if the characters were copied to a temporary character array and then the characters were copied from the array to dest.
@@ -143,9 +143,9 @@ The behavior is undefined if access occurs beyond the end of the dest array. The
 ✅ ft_strlcpy & ft_strlcat
 
 ```c
-size_t strlcpy(char *dst, const char *src, size_t size);
+size_t ft_strlcpy(char *dst, const char *src, size_t size);
 
-size_t strlcat(char *dst, const char *src, size_t size);
+size_t ft_strlcat(char *dst, const char *src, size_t size);
 ```
 ```
 The strlcpy() and strlcat() functions copy and concatenate NUL-terminated strings respectively.
@@ -158,7 +158,7 @@ The strlcat() function appends the NUL-terminated string src to the end of dst. 
 ✅ ft_toupper
 
 ```c
-int toupper( int ch );
+int ft_toupper( int ch );
 ```
 ```
 Converts the given character to uppercase according to the character conversion rules defined by the currently installed C locale.
@@ -168,7 +168,7 @@ In the default "C" locale, the following lowercase letters abcdefghijklmnopqrstu
 ✅ ft_tolower
 
 ```c
-int tolower( int ch );
+int ft_tolower( int ch );
 ```
 ```
 Converts the given character to lowercase according to the character conversion rules defined by the currently installed C locale.
@@ -178,7 +178,7 @@ In the default "C" locale, the following uppercase letters ABCDEFGHIJKLMNOPQRSTU
 ✅ ft_strchr
 
 ```c
-char *strchr( const char *str, int ch );
+char *ft_strchr( const char *str, int ch );
 ```
 ```
 Finds the first occurrence of ch (after conversion to char as if by (char)ch) in the null-terminated byte string pointed to by str (each character interpreted as unsigned char). The terminating null character is considered to be a part of the string and can be found when searching for '\0'.
@@ -187,7 +187,7 @@ Finds the first occurrence of ch (after conversion to char as if by (char)ch) in
 ✅ ft_strrchr
 
 ```c
-char *strrchr( const char *str, int ch );
+char *ft_strrchr( const char *str, int ch );
 ```
 ```
 Finds the last occurrence of ch (after conversion to char as if by (char)ch) in the null-terminated byte string pointed to by str (each character interpreted as unsigned char). The terminating null character is considered to be a part of the string and can be found if searching for '\0'.
@@ -196,7 +196,7 @@ Finds the last occurrence of ch (after conversion to char as if by (char)ch) in 
 ✅ ft_strncmp
 
 ```c
-int strncmp( const char* lhs, const char* rhs, size_t count );
+int ft_strncmp( const char* lhs, const char* rhs, size_t count );
 ```
 ```
 Compares at most count characters of two possibly null-terminated arrays. The comparison is done lexicographically. Characters following the null character are not compared.
@@ -207,7 +207,7 @@ The behavior is undefined when access occurs past the end of either array lhs or
 ✅ ft_memchr
 
 ```c
-void *memchr( const void *ptr, int ch, size_t count );
+void *ft_memchr( const void *ptr, int ch, size_t count );
 ```
 ```
 Finds the first occurrence of (unsigned char)ch in the initial count bytes (each interpreted as unsigned char) of the object pointed to by ptr.
@@ -216,7 +216,7 @@ Finds the first occurrence of (unsigned char)ch in the initial count bytes (each
 ✅ ft_memcmp
 
 ```c
-int memcmp( const void* lhs, const void* rhs, size_t count );
+int ft_memcmp( const void* lhs, const void* rhs, size_t count );
 ```
 ```
 Compares the first count bytes of the objects pointed to by lhs and rhs. The comparison is done lexicographically.
@@ -227,7 +227,7 @@ The behavior is undefined if access occurs beyond the end of either object point
 ✅ ft_strnstr
 
 ```c
-char *strstr(const char *big, const char *little);
+char *ft_strstr(const char *big, const char *little);
 ```
 ```
 The  strstr()  function locates the first occurrence of the null-terminated string little in the null-terminated string big.
@@ -236,7 +236,7 @@ The  strstr()  function locates the first occurrence of the null-terminated stri
 ✅ ft_atoi
 
 ```c
-int atoi( const char *str );
+int ft_atoi( const char *str );
 ```
 ```
 Interprets an integer value in a byte string pointed to by str. The implied radix is always 10.
@@ -248,7 +248,7 @@ If the value of the result cannot be represented, i.e. the converted value falls
 ✅ ft_calloc
 
 ```c
-void* calloc( size_t num, size_t size );
+void *ft_calloc( size_t num, size_t size );
 ```
 ```
 Allocates memory for an array of num objects of size and initializes all bytes in the allocated storage to zero.
@@ -259,7 +259,7 @@ If size is zero, the behavior is implementation defined (null pointer may be ret
 ✅ ft_strdup
 
 ```c
-char *strdup( const char *src );
+char *ft_strdup( const char *src );
 ```
 ```
 Returns a pointer to a null-terminated byte string, which is a duplicate of the string pointed to by src. The space for the new string is obtained as if the malloc was invoked. The returned pointer must be passed to free to avoid a memory leak.
