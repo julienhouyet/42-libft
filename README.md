@@ -57,9 +57,9 @@ $ make fclean
 int ft_isalpha( int ch );
 ```
 ```
-Checks if the given character is an alphabetic character, i.e. either an uppercase letter (ABCDEFGHIJKLMNOPQRSTUVWXYZ), or a lowercase letter (abcdefghijklmnopqrstuvwxyz).
-In locales other than "C", an alphabetic character is a character for which isupper() or islower() returns true or any other character considered alphabetic by the locale. In any case, iscntrl(), isdigit(), ispunct() and isspace() will return false for this character.
-The behavior is undefined if the value of ch is not representable as unsigned char and is not equal to EOF.
+> Checks if the given character is an alphabetic character, i.e. either an uppercase letter (ABCDEFGHIJKLMNOPQRSTUVWXYZ), or a lowercase letter (abcdefghijklmnopqrstuvwxyz).
+> In locales other than "C", an alphabetic character is a character for which isupper() or islower() returns true or any other character considered alphabetic by the locale. In any case, iscntrl(), isdigit(), ispunct() and isspace() will return false for this character.
+> The behavior is undefined if the value of ch is not representable as unsigned char and is not equal to EOF.
 ```
 
 ✅ ft_isdigit
